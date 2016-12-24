@@ -22,8 +22,14 @@ router.post('/create', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  //TO-DO: check username using verify lib
-  
+  //TO-DO: check username  and password using verify lib
+  var user = userController.retrieve(req.body.email);
+  if(user) {
+    var passwordMatches = hash.checkPassword(req.body.password, user.password);
+    if(passwordMatches) res.redirect('/inbox');    
+  } else {
+    res.json({ message: "Username or Password Incorrect!" });
+  }
 });
 
 module.exports = router;
