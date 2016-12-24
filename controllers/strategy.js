@@ -1,7 +1,6 @@
 var passport = require("passport");
 var localStrategy = require("passport-local").Strategy;
-var dbconnect = require("../lib/dbconnect");
-
+/*
 function validPassword(passwordClear, PasswordHash) {
 
 }
@@ -28,3 +27,4 @@ passport.use(new localStrategy(
         );
     }
 ));
+*/
