@@ -1,4 +1,5 @@
 var express = require('express');
+var verify = require('../lib/verify');
 var router = express.Router();
 var userController = require('../controllers/userController');
 var hash = require('../lib/hash');
@@ -12,15 +13,23 @@ router.post('/create', function(req, res, next) {
   console.log(req.body);
   hash.hashPassword(req.body.password, function(hash) {
     console.log("Hased pass: " + hash);
-    userController.create({
-      email: req.body.email,
-      password: hash,
-      inbox: [],
-      draft: []
-    });
-    res.json({
-      success: true
-    }); 
+    var result = verify.checkUser(req.body);
+    if(!result){
+        res.jason({
+          success: false
+        });
+    }
+    else {
+      userController.create({
+          email: req.body.email,
+          password: hash,
+          inbox: [],
+          draft: []
+      });
+      res.json({
+          success: true
+      }); 
+    }
   });  
 });
 
