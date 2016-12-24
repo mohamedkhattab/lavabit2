@@ -9,26 +9,33 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {  
-  userController.create({
-    email: req.body.email,
-    password: hash.hashPassword(req.body.password),
-    inbox: [],
-    draft: []
-  });
-  res.json({
-    success: true
-  });   
+  console.log(req.body);
+  hash.hashPassword(req.body.password, function(hash) {
+    console.log("Hased pass: " + hash);
+    userController.create({
+      email: req.body.email,
+      password: hash,
+      inbox: [],
+      draft: []
+    });
+    res.json({
+      success: true
+    }); 
+  });  
 });
 
 router.post('/login', function(req, res, next) {
   //TO-DO: check username  and password using verify lib
-  var user = userController.retrieve(req.body.email);
-  if(user) {
-    var passwordMatches = hash.checkPassword(req.body.password, user.password);
-    if(passwordMatches) res.redirect('/inbox');    
-  } else {
-    res.json({ message: "Username or Password Incorrect!" });
-  }
+  userController.retrieve(req.body.email, function(user) {
+    if(user) {
+      hash.checkPassword(req.body.password, user.password, function(matches) {
+          if(matches) res.redirect('/inbox');    
+          else res.json({ message: "Username or Password Incorrect 1!" });
+      });
+    } else {
+      res.json({ message: "Username or Password Incorrect 2!" });
+    }
+  });
 });
 
 module.exports = router;

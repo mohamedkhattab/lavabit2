@@ -13,7 +13,7 @@ module.exports = {
     },
 
     //returns the user object if found and null if not found
-    retrieve: function(email) {
+    retrieve: function(email, callback) {
         var result = null;
         var query = User.where({ email: email });
         query.findOne(function(err, user) {
@@ -21,7 +21,7 @@ module.exports = {
             if(err) console.error(err);
             if(user) result = user;
 
-            return result;
+            return callback(result);
         });
     }
 }
