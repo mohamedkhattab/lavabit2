@@ -26,7 +26,7 @@ router.post('/create', function(req, res, next) {
           inbox: [],
           draft: []
       });
-      res.json({
+      res.jason({
           success: true
       }); 
     }
