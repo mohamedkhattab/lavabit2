@@ -9,13 +9,15 @@ router.get('/', function(req, res, next) {
 
 router.post('/create', function(req, res, next) {
   userController.create({
-    username: "amr",
-    email: "hello@hhh.com",
-    password: "why you do this",
-    inbox: [{from: "hbjybuyb", to : "uihuhhn" , subject: "iuhhuniuuu", message: "ionjinoi",starred: true }] ,
-    draft: [{from: "hbjybuyb", to : "uihuhhn" , subject: "iuhhuniuuu", message: "ionjinoi",starred: true }]
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    inbox: [],
+    draft: []
   });
-  res.send("YES YES YES");   
+  res.json({
+    success: true
+  });   
                              
 });
 
