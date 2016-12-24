@@ -8,11 +8,10 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/create', function(req, res, next) {
+router.post('/create', function(req, res, next) {  
   userController.create({
-    username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
+    password: hash.hashPassword(req.body.password),
     inbox: [],
     draft: []
   });
