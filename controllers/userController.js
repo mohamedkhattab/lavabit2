@@ -13,9 +13,9 @@ module.exports = {
     },
 
     //returns the user object if found and null if not found
-    retrieve: function(username) {
+    retrieve: function(email) {
         var result = null;
-        var query = User.where({ username: username });
+        var query = User.where({ email: email });
         query.findOne(function(err, user) {
             //TO-DO: change in production
             if(err) console.error(err);
