@@ -52,4 +52,11 @@ router.post('/login', function(req, res, next) {
   });
 });
 
+//TO-DO: update
+router.post('/remove', function(req, res, next) {
+  userController.delete("fedora2@lavabit.com", null, true, function(err) {
+    res.json({ success: err });
+  });
+});
+
 module.exports = router;

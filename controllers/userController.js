@@ -23,5 +23,27 @@ module.exports = {
 
             return callback(result);
         });
+    },
+
+    update: function(email, newVals) {
+        this.retrieve(email, function(user) {
+            for (var attr in newVals) {
+                if (obj.hasOwnProperty(attr)) user[attr] = newVals[attr];
+            }
+        });
+    },
+
+    delete: function(email, vals, drop, callback) {
+        if(drop) {
+            this.retrieve(email, function(user) {
+                if(user) {
+                    user.remove(function() {
+                        return callback(true);
+                    });
+                }
+
+                return callback(false);
+            });
+        }
     }
 }
