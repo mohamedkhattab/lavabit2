@@ -10,6 +10,8 @@ router.get('/:id', function(req, res, next) {
 router.post('/send/:id', function(req, res, next) {
     userController.retrieveById(req.params.id, function(user) {
         if(!user) res.json({ success: false, message: "Username or Password Incorrect!" });
+        console.log(user);
+        console.log(user.email);
         mailer.send(user.email, user.password, {
             from: req.body.from,
             to: req.body.to,
