@@ -38,6 +38,7 @@ module.exports = {
             for (var attr in newVals) {
                 if (obj.hasOwnProperty(attr)) user[attr] = newVals[attr];
             }
+        
         });
     },
 
