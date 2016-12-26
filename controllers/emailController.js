@@ -11,8 +11,9 @@ var emailStructure = {
 
 module.exports = {
     addMail : function(emailAddress , mail , callback ){
-        console.log(" ---> " + emailAddress);
+        //console.log(" ---> " + emailAddress);
         userController.retrieve(emailAddress , function(user){
+            //console.log(user + " :D :D ");
             if(!user)   return callback(new Error("There is no such user  "));
             var _message = {
                 from: mail.from[0].address,

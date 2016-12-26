@@ -13,10 +13,10 @@ module.exports = {
     },
 
     //returns the user object if found and null if not found
-    retrieve: function(email, callback) {
+    retrieve: function(Email, callback) {
         var result = null;
-        console.log("RETRIVE: " + email);
-        query = User.where({ email: email });
+        //console.log("RETRIVE: " + Email);
+        query = User.where({ email: Email });
         query.findOne(function(err, user) {
             //TO-DO: change in production
             if(err) console.error(err);
@@ -38,7 +38,7 @@ module.exports = {
             for (var attr in newVals) {
                 if (obj.hasOwnProperty(attr)) user[attr] = newVals[attr];
             }
-            
+
         });
     },
 

@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {  
-  console.log(req.body);
+  //console.log(req.body);
   hash.hashPassword(req.body.password, function(hash) {
-    console.log("Hashed pass: " + hash);
+    //console.log("Hashed pass: " + hash);
     userController.retrieve(req.body.email, function(user) {
-        console.log("USER: " + user);
+        //console.log("USER: " + user);
         verify.checkUser(req.body, function(result) {
-            console.log("Result: " + result);
+            //console.log("Result: " + result);
             if(!result || user){
                 res.json({
                   success: false
