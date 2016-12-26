@@ -15,25 +15,24 @@ router.post('/create', function(req, res, next) {
     console.log("Hashed pass: " + hash);
     userController.retrieve(req.body.email, function(user) {
         console.log("USER: " + user);
-        var result = verify.checkUser(req.body, function() {
-          return user == null;
+        verify.checkUser(req.body, function(result) {
+            console.log("Result: " + result);
+            if(!result || user){
+                res.json({
+                  success: false
+                });
+            } else {
+                userController.create({
+                  email: req.body.email,
+                  password: hash,
+                  inbox: [],
+                  draft: []
+                });
+                res.json({
+                  success: true
+                }); 
+            } 
         });
-        console.log("Result: " + result);
-        if(!result){
-          res.json({
-            success: false
-          });
-        } else {
-          userController.create({
-            email: req.body.email,
-            password: hash,
-            inbox: [],
-            draft: []
-          });
-          res.json({
-            success: true
-          }); 
-        } 
     });
   });  
 });
