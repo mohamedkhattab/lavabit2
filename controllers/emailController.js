@@ -12,19 +12,24 @@ var emailStructure = {
 module.exports = {
     addMail : function(emailAddress , mail , callback ){
         //console.log(" ---> " + emailAddress);
-        userController.retrieve(emailAddress , function(user){
+        userController.retrieve(emailAddress , function(userTo){
             //console.log(user + " :D :D ");
-            if(!user)   return callback(new Error("There is no such user  "));
-            var _message = {
-                from: mail.from[0].address,
-                to: mail.to[0].address,
-                subject: mail.subject,
-                message: mail.text,
-                starred: false
-            };
-            user.inbox.push(_message);
-            user.save();
-            return callback(null);
+            if(!userTo)   return callback(new Error("There is no such user  "));
+            userController.retrieve(mail.from[0].address , function(userFrom){
+                if(!userFrom)   return callback(new Error("There is no such user  "));
+                var _message = {
+                    from: userFrom,
+                    to: userTo,
+                    subject: mail.subject,
+                    message: mail.text,
+                    starred: false
+                };
+                userFrom.sent.push(_message);
+                userTo.inbox.push(_message);
+                userFrom.save();
+                userTo.save();
+                return callback(null);
+            });            
         });
     }
 };

@@ -12,7 +12,8 @@ var userSchema = mongoose.Schema({
     email: String,
     password: String,
     inbox: [emailStructure],
-    draft: [emailStructure]
+    draft: [emailStructure],
+    sent: [emailStructure]
 });
 
 var user = mongoose.model('User', userSchema);
