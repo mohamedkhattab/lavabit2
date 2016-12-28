@@ -1,30 +1,16 @@
 var mailClient = angular.module('mailClient', []);
 
-mailClient.controller('inboxController', ['$scope', function($scope) {
-    $scope.result = [{
-        from: "h@h.com",
-        to: "r@r.com",
-        subject: "afgwegwegw",
-        text: "hello world!!!!!!"
-    },
-    {
-        from: "h@h.com",
-        to: "r@r.com",
-        subject: "afgwegwegw",
-        text: "hello world!!!!!!"
-    },
-    {
-        from: "h@h.com",
-        to: "r@r.com",
-        subject: "afgwegwegw",
-        text: "hello world!!!!!!"
-    },
-    {
-        from: "h@h.com",
-        to: "r@r.com",
-        subject: "afgwegwegw",
-        text: "hello world!!!!!!"
-    }];
+mailClient.controller('inboxController', ['$scope', '$http', function($scope, $http) {
+    $scope.id = $("#_id").val();
+    $scope.inbox = [];
+    $http({
+        method: 'GET',
+        url: '/user/fetch/' + $scope.id,
+    }).then(function successCallback(response) {
+        $scope.inbox = response.data.inbox;
+    }, function errorCallback(response) {
+        console.log(response);
+    });
 
-    $scope.matata = "hakuna matata";
+    console.log($scope.id);
 }]);

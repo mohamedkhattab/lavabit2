@@ -7,6 +7,16 @@ router.get('/:id', function(req, res, next) {
     res.render('home', { id: req.params.id });
 });
 
+router.get('/fetch/:id', function(req, res, next) {
+    userController.retrieveById(req.params.id, function(user) {
+        if(user) {
+            res.json({ success: true, inbox: user.inbox });
+        } else {
+            res.json({ success: false, inbox: null });
+        }
+    });
+});
+
 router.post('/send/:id', function(req, res, next) {
     //console.log("HERE ERRRORRRR \n");
     userController.retrieveById(req.params.id, function(user) {
@@ -25,7 +35,5 @@ router.post('/send/:id', function(req, res, next) {
         });
     });
 });
-
-
 
 module.exports = router;
