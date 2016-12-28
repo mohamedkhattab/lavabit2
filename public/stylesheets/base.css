@@ -1,0 +1,21 @@
+
+.main-nav {
+    margin-bottom: 0;
+}
+
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    height: 100%
+}
+
+.sidebar a {
+    color: #fff;
+}
+
+.main-nav-stack li:hover {
+    background-color: #f00;
+
+}

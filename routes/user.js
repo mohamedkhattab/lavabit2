@@ -4,7 +4,7 @@ var mailer = require('../lib/mailer');
 var userController = require('../controllers/userController');
 
 router.get('/:id', function(req, res, next) {
-    res.render('home', { id: req.params.id });
+    res.render('home.html', { id: req.params.id });
 });
 
 router.post('/send/:id', function(req, res, next) {

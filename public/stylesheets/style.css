@@ -1,8 +1,16 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin-top: 25px;
 }
 
-a {
-  color: #00B7FF;
+legend h1 {
+  color: #333;
+}
+
+legend h1 span {
+  color: #f00;
+}
+
+padding {
+  padding: 30px;
 }

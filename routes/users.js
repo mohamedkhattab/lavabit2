@@ -38,7 +38,11 @@ router.post('/create', function(req, res, next) {
 });
 
   router.get('/login', function(req, res, next) {
-    res.render('login', {});
+    res.render('login.ejs', {});
+  });
+
+  router.get('/signup', function(req, res, next) {
+    res.render('signup.ejs', {});
   });
 
 router.post('/login', function(req, res, next) {
@@ -47,10 +51,10 @@ router.post('/login', function(req, res, next) {
     if(user) {
       hash.checkPassword(req.body.password, user.password, function(matches) {
           if(matches) res.redirect('/user/' + user._id);    
-          else res.json({ message: "Username or Password Incorrect 1!" });
+          else res.render('login.ejs', { message: "Username or Password Incorrect!" });
       });
     } else {
-      res.json({ message: "Username or Password Incorrect 2!" });
+      res.render('login.ejs', { message: "Username or Password Incorrect!" });
     }
   });
 });

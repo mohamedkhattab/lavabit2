@@ -8,10 +8,12 @@
   "dependencies": {
     "bcrypt": "^1.0.1",
     "body-parser": "~1.15.2",
+    "consolidate": "^0.14.5",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "^2.5.5",
     "express": "~4.14.0",
+    "express-session": "^1.14.2",
     "jade": "~1.11.0",
     "mailparser": "^0.6.1",
     "mongoose": "^4.7.4",
@@ -22,6 +24,7 @@
     "passport-local": "^1.0.0",
     "sendmail": "^1.1.1",
     "serve-favicon": "~2.3.0",
-    "smtp-server": "^1.17.0"
+    "smtp-server": "^1.17.0",
+    "swig": "^1.4.2"
   }
 }

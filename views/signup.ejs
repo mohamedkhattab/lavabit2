@@ -11,10 +11,10 @@
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
                     <div class="jumbotron padding">
-                        <form class="form-horizontal" action="/users/login" method="POST">
+                        <form class="form-horizontal">
                             <fieldset>
                                 <legend><h1>Lava<span>bit</span></h1></legend>
-                               
+
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-2">
                                         <p>
@@ -43,23 +43,22 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <div class="togglebutton has-warning">
-                                            <label>
-                                                <input type="checkbox" checked=""> remember me?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <button type="submit" class="btn btn-raised btn-danger">Login</button>
+                                    <label for="inputConfirm" class="col-md-2 control-label">Re-Enter Password</label>
+
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control has-warning" id="inputConfirm" placeholder="Re-Enter Password..." name="confirm">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-2">
-                                        <a href="/users/signup">Don't have an account? Signup</a>
+                                        <button type="submit" class="btn btn-raised btn-danger">Signup</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <a href="/users/login">Already have an account? Login</a>
                                     </div>
                                 </div>
                                 
