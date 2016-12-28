@@ -1,4 +1,11 @@
 
+body{ overflow: hidden;}
+
+.scroll {
+    overflow: scroll;
+    height: 93%;
+}
+
 .main-nav {
     margin-bottom: 0;
 }
@@ -22,11 +29,16 @@
 }
 
 .inbox-panel, 
-.zero-padding {
+.zero-padding,
+.message-panel {
     padding: 0;
     margin-bottom: 0;
 }
 
 .zero-margin {
-    margin-bottom: 
+    margin-bottom: 0;
+}
+
+.message-panel-content {
+    height: 100%;
 }

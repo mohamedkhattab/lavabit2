@@ -30,14 +30,14 @@
                             </div>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Compose</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#compose">Compose</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-controller="inboxController">
             <div class="col-md-3 zero-padding">
                 <div class="well sidebar">
                    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
@@ -48,21 +48,79 @@
                 </div>
             </div>
 
-            <div class="col-md-3 inbox-panel" ng-controller="inboxController">
-                <div class="panel panel-danger" ng-repeat="msg in inbox">
+            <div class="col-md-3 inbox-panel">
+                <div class="scroll">
+                    <div class="panel panel-danger zero-margin" ng-repeat="msg in inbox">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">From: {{ msg.from }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4><a href="#" ng-click="fetchMsg(msg._id)" class="silent-link">{{ msg.subject }}</a></h4>
+                            <p>{{ msg.message }}</p>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 message-panel">
+                <div class="panel panel-danger zero-margin message-panel-content">
                     <div class="panel-heading">
-                        <h3 class="panel-title">From: {{ msg.from }}</h3>
+                        <h3 class="panel-title">From: {{ message.from }}</h3>
                     </div>
                     <div class="panel-body">
-                        <h4>{{ msg.subject }}</h4>
-                        <p>{{ msg.message }}</p>
+                        <h4><a href="{{ msg._id }}" class="silent-link">{{ message.subject }}</a></h4>
+                        <p>{{ message.message }}</p>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="modal" id="compose" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Send Email</h4>
+                    </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="inputTo" class="col-md-2 control-label">To</label>
+
+                                <div class="col-md-10">
+                                    <input type="email" ng-model="mail.to" class="form-control" name="to" id="inputTo" placeholder="To...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSubj" class="col-md-2 control-label">Subject</label>
+
+                                <div class="col-md-10">
+                                    <input type="text" ng-model="mail.subject" class="form-control" name="subject" id="inputSubj" placeholder="Subject...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputMessage" class="col-md-2 control-label">Message</label>
+
+                                <div class="col-md-10">
+                                    <textarea class="form-control" ng-model="mail.text" name="message" id="inputMessage" placeholder="Message..."></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="sendMail()">Send</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        </div>
+
         <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/js/bootstrap.js">
+        <!-- <link rel="stylesheet" href="../bower_components/bootstrap/dist/js/bootstrap.min.js"> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="../javascripts/material.js"></script>
         <script src="../javascripts/angular.js"></script>
         <script src="../javascripts/app.js"></script>
