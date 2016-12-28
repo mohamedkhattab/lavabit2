@@ -18,9 +18,7 @@ router.post('/create', function(req, res, next) {
         verify.checkUser(req.body, function(result) {
             //console.log("Result: " + result);
             if(!result || user){
-                res.json({
-                  success: false
-                });
+                res.redirect('/users/signup');
             } else {
                 userController.create({
                   email: req.body.email,
@@ -28,9 +26,7 @@ router.post('/create', function(req, res, next) {
                   inbox: [],
                   draft: []
                 });
-                res.json({
-                  success: true
-                }); 
+                res.redirect('/'); 
             } 
         });
     });
@@ -38,11 +34,11 @@ router.post('/create', function(req, res, next) {
 });
 
   router.get('/login', function(req, res, next) {
-    res.render('login.ejs', {});
+    res.render('login', {});
   });
 
   router.get('/signup', function(req, res, next) {
-    res.render('signup.ejs', {});
+    res.render('signup', {});
   });
 
 router.post('/login', function(req, res, next) {
@@ -51,10 +47,10 @@ router.post('/login', function(req, res, next) {
     if(user) {
       hash.checkPassword(req.body.password, user.password, function(matches) {
           if(matches) res.redirect('/user/' + user._id);    
-          else res.render('login.ejs', { message: "Username or Password Incorrect!" });
+          else res.render('login', { message: "Username or Password Incorrect!" });
       });
     } else {
-      res.render('login.ejs', { message: "Username or Password Incorrect!" });
+      res.render('login', { message: "Username or Password Incorrect!" });
     }
   });
 });

@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* TO-DO: check session */
 router.get('/', function(req, res, next) {
-  res.render('home.html', {});
+  res.render('login', { message: "" });
 });
 
 module.exports = router;

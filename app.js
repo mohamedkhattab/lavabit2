@@ -5,18 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dbconnect = require("./lib/dbconnect");
-var cons = require('consolidate');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var user = require('./routes/user');
 app = express();
 
-app.engine('html', cons.swig);
-app.engine('ejs', cons.ejs);
 app.set('views', path.join(__dirname, "views"));
-//app.set('view engine', 'html');
-//app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
