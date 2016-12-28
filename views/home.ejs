@@ -44,6 +44,7 @@
                         <li class="active"><a href="#"> <span class="fa fa-inbox "></span> Inbox</a></li>
                         <li><a href="#">Sent</a></li>
                         <li><a href="#">Starred</a></li>
+                        <li><a href="#" ng-click="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -84,6 +85,14 @@
                 <div class="modal-body">
                     <form action="#">
                         <fieldset>
+                            <div class="form-group">
+                                <label for="inputFrom" class="col-md-2 control-label">From</label>
+
+                                <div class="col-md-10">
+                                    <input type="email" ng-model="mail.from" class="form-control" name="from" id="inputFrom" placeholder="From...">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="inputTo" class="col-md-2 control-label">To</label>
 

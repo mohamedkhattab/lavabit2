@@ -13,13 +13,11 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-router.get('/logout' , function(req , res , next){
-    if(req.session.user){
+router.post('/logout' , function(req , res , next){
         req.session.destroy(function(err){
             res.redirect('/');
         });
-    }
-    res.redirect('/');
+        
 });
 
 router.get('/fetch/:id', function(req, res, next) {

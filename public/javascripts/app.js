@@ -1,6 +1,6 @@
 var mailClient = angular.module('mailClient', []);
 
-mailClient.controller('inboxController', ['$scope', '$http', function($scope, $http) {
+mailClient.controller('inboxController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.id = $("#_id").val();
     $scope.inbox = [];
     $scope.message = {};
@@ -45,6 +45,15 @@ mailClient.controller('inboxController', ['$scope', '$http', function($scope, $h
         }, function errorCallback(response) {
             console.log(response);
         });
-    }
+    };
+
+    $scope.logout = function() {
+        $http.post('/user/logout', {}, {})
+        .then(function successCallback(response) {
+            $window.location.href = '/';
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    };
 
 }]);
