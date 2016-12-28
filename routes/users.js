@@ -49,8 +49,12 @@ router.post('/login', function(req, res, next) {
           if(matches){
              req.session.user = user;
              if(req.body.remember){
+               res.clearCookie("123");
+               console.log("HERE - > " + req.cookies);
                res.cookie("123" , "123");
                console.log("YES baby YES");
+               console.log(req.cookies["123"]);
+               console.log(req.cookies);
                 res.redirect('/user/' + user._id);
              }
             else 

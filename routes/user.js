@@ -11,7 +11,15 @@ router.get('/:id', function(req, res, next) {
             res.redirect('/');
         res.render('home', { id: req.params.id });
     });
-    
+});
+
+router.get('/logout' , function(req , res , next){
+    if(req.session.user){
+        req.session.destroy(function(err){
+            res.redirect('/');
+        });
+    }
+    res.redirect('/');
 });
 
 router.get('/fetch/:id', function(req, res, next) {
