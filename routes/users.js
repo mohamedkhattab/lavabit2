@@ -46,7 +46,16 @@ router.post('/login', function(req, res, next) {
   userController.retrieve(req.body.email, function(user) {
     if(user) {
       hash.checkPassword(req.body.password, user.password, function(matches) {
-          if(matches) res.redirect('/user/' + user._id);    
+          if(matches){
+             req.session.user = user;
+             if(req.body.remember){
+               res.cookie("123" , "123");
+               console.log("YES baby YES");
+                res.redirect('/user/' + user._id);
+             }
+            else 
+             res.redirect('/user/' + user._id);
+          }
           else res.render('login', { message: "Username or Password Incorrect!" });
       });
     } else {
