@@ -45,6 +45,7 @@ mailClient.controller('inboxController', ['$scope', '$http', '$window', function
         }, function errorCallback(response) {
             console.log(response);
         });
+        $('#compose').modal('hide');
     };
 
     $scope.logout = function() {
