@@ -6,6 +6,7 @@ var hash = require('../lib/hash');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  console.log("I am here my bitches :D :D ");
   res.send('respond with a resource');
 });
 
@@ -18,7 +19,8 @@ router.post('/create', function(req, res, next) {
         verify.checkUser(req.body, function(result) {
             //console.log("Result: " + result);
             if(!result || user){
-                res.redirect('/users/signup');
+                console.log("error baby :D :D " + req.body.password + " " + req.body.confirm);
+                res.render('signup' , {message : "your username or password is Incorrect"});
             } else {
                 userController.create({
                   email: req.body.email,
@@ -55,7 +57,7 @@ router.post('/login', function(req, res, next) {
                console.log("YES baby YES");
                console.log(req.cookies["123"]);
                console.log(req.cookies);
-                res.redirect('/user/' + user._id);
+               res.redirect('/user/' + user._id);
              }
             else 
              res.redirect('/user/' + user._id);

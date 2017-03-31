@@ -11,7 +11,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var user = require('./routes/user');
 app = express();
-
+app.set('env' , 'development');
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 
