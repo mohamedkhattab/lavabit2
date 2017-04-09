@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+console.log("There is no port for you :D");
 var app = require('../app');
 var debug = require('debug')('lavabit:server');
 var http = require('http');
@@ -14,8 +14,9 @@ var SMTPServer = require('../lib/smtpserver');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+console.log("There is no port for you :D");
 app.set('port', port);
-
+console.log("There is no port for you :D");
 /**
  * Create HTTP server.
  */
@@ -27,6 +28,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+console.log("Server Listening on Port " + port);
 server.on('error', onError);
 server.on('listening', onListening);
 

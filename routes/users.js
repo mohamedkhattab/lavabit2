@@ -10,27 +10,27 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {  
-  //console.log(req.body);
-  hash.hashPassword(req.body.password, function(hash) {
-    //console.log("Hashed pass: " + hash);
-    userController.retrieve(req.body.email, function(user) {
-        //console.log("USER: " + user);
-        verify.checkUser(req.body, function(result) {
-            //console.log("Result: " + result);
-            if(!result || user){
-                res.redirect('/users/signup');
-            } else {
-                userController.create({
-                  email: req.body.email,
-                  password: hash,
-                  inbox: [],
-                  draft: []
-                });
-                res.redirect('/'); 
-            } 
-        });
-    });
-  });  
+	//console.log(req.body);
+	hash.hashPassword(req.body.password, function(hash) {
+		//console.log("Hashed pass: " + hash);
+		userController.retrieve(req.body.email, function(user) {
+			//console.log("USER: " + user);
+			verify.checkUser(req.body, function(result) {
+				//console.log("Result: " + result);
+				if(!result || user){
+					res.redirect('/users/signup');
+				} else {
+					userController.create({
+						email: req.body.email,
+						password: hash,
+						inbox: [],
+						draft: []
+					});
+					res.redirect('/'); 
+				} 
+			});
+		});
+	});  
 });
 
   router.get('/login', function(req, res, next) {
@@ -52,15 +52,16 @@ router.post('/login', function(req, res, next) {
                res.clearCookie("123");
                console.log("HERE - > " + req.cookies);
                res.cookie("123" , "123");
-               console.log("YES baby YES");
+               console.log("YES baby YES!");
                console.log(req.cookies["123"]);
                console.log(req.cookies);
-                res.redirect('/user/' + user._id);
              }
-            else 
-             res.redirect('/user/' + user._id);
+			  
+			 res.redirect('/user/' + user._id);
           }
-          else res.render('login', { message: "Username or Password Incorrect!" });
+          else {
+			res.render('login', { message: "Username or Password Incorrect!" });
+		  }
       });
     } else {
       res.render('login', { message: "Username or Password Incorrect!" });

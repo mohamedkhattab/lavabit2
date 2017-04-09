@@ -36,7 +36,8 @@ module.exports = {
     update: function(email, newVals) {
         this.retrieve(email, function(user) {
             for (var attr in newVals) {
-                if (obj.hasOwnProperty(attr)) user[attr] = newVals[attr];
+                if (user.hasOwnProperty(attr))
+					user[attr] = newVals[attr];
             }
 
         });

@@ -8,6 +8,7 @@ var emailStructure = {
   starred: Boolean
 };
 
+// TODO: restructure schema
 var userSchema = mongoose.Schema({
     email: String,
     password: String,
@@ -19,3 +20,4 @@ var userSchema = mongoose.Schema({
 var user = mongoose.model('User', userSchema);
 
 module.exports = user;
+

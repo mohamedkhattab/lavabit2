@@ -1,0 +1,30 @@
+
+var User = require('../models/user');
+var userController = require('./userController');
+var aes256 = require('nodejs-aes265');
+
+
+module.exports = {
+    addMail : function(emailAddress , mail , callback ){
+
+        userController.retrieve(emailAddress , function(userTo){
+            
+            if(!userTo)   return callback(new Error("There is no such user for you"));
+            userController.retrieve(mail.from[0].address , function(userFrom){
+                if(!userFrom)   return callback(new Error("There is no such user for you, I'm not here"));
+                var _message = {
+                    from: userFrom.email,
+                    to: userTo.email,
+                    subject: mail.subject,
+                    message: mail.text,
+                    starred: false
+                };
+                userFrom.sent.push(aes256.encrypt(_message));
+                userTo.inbox.push(_message);
+                userFrom.save();
+                userTo.save();
+                return callback(null);
+            });            
+        });
+    }
+};

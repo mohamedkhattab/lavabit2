@@ -1,91 +1,234 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Lavabit | Login</title>
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="../stylesheets/bootstrap-material-design.css">
-        <link rel="stylesheet" href="../stylesheets/style.css">
-    </head>
-    <body>
-        
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>MagmaBit | Welcome to MagmaBit</title>
+
+    <!-- CSS  -->
+    <link href="../stylesheets/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="../stylesheets/custom-min.css" type="text/css" rel="stylesheet" >
+</head>
+<body id="top" class="scrollspy">
+
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+ 
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+ 
+</div>
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
-            <div class="row">
-                <div class="col-md-offset-3 col-md-6">
-                    <div class="jumbotron padding">
-                        <form class="form-horizontal" action="/users/login" method="POST">
-                            <fieldset>
-                                <legend><h1>Lava<span>bit</span></h1></legend>
-                               
-                                <div class="form-group">
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <p>
-                                        Lavabit is an end-to-end encrypted email server, Lavabit is ad-free
-                                        and prioritizes privacy and security above all else.
-                                        </p>
-                                    </div>
-                                </div>
-                                <% if(message) { %>
-                                <div class="form-group">
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <p>
-                                            <%= message %> 
-                                        </p>
-                                    </div>
-                                </div>
-                                <% } %>
+            <div class="nav-wrapper">
+            <a href="#" id="logo-container" class="brand-logo">MagmaBit</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#intro">What is MagmaBit ?</a></li>
+					<li><a href="#work">Signup/Login</a></li>
+					<li><a href="#about">About</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                  <li><a href="#intro">What is MagmaBit ?</a></li>
+                  <li><a href="#work">Signup/Login</a></li>
+				  <li><a href="#about">About</a></li>
+                </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
+        </div>
+    </nav>
+</div>
 
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-md-2 control-label">Email</label>
+<!--Hero-->
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <h1 class="text_h center header cd-headline letters type">
+            <span>We are</span> 
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">Secuirty</b>
+                <b>Privacy</b>
+                <b>Freedom</b>
+				<b>Legion</b>
+            </span>
+        </h1>
+    </div>
+</div>
 
-                                    <div class="col-md-10">
-                                        <input type="email" class="form-control has-warning" id="inputEmail" placeholder="Email..." name="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-md-2 control-label">Password</label>
+<!--Intro and service-->
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="col s12">
+              <h2 class="center header text_h2">
+				MagmaBit is an <span class="span_h2">end-to-end</span> encrypted Email service that's 
+				<span class="span_h2">Decentralized</span>,
+				completely <span class="span_h2">Free</span> and
+				<span class="span_h2">NEVER</span> stores your private keys.
+			  </h2>
+            </div>
 
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control has-warning" id="inputPassword" placeholder="Password..." name="password">
-                                    </div>
-                                </div>
-
-                                <div class="form-group" style="margin-top: 0;">
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <div class="togglebutton has-warning">
-                                            <label>
-                                                <input type="checkbox" name="remember" checked=""> remember me?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <button type="submit" class="btn btn-raised btn-danger">Login</button>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <a href="/users/signup">Don't have an account? Signup</a>
-                                    </div>
-                                </div>
-                                
-                            </fieldset>
-                        </form>
-                    </div>
+            <div  class="col s12 m4 l4">
+                <div class="center promo promo-example">
+                    <i class="fa fa-lock"></i>
+                    <h5 class="promo-caption">Client-Generated Keys</h5>
+                    <p class="light center">RSA public and pricate keys are both generated on
+					  the client and your private key never leaves your computer.
+					</p>
+                </div>
+            </div>
+            <div class="col s12 m4 l4">
+                <div class="center promo promo-example">
+                    <i class="fa fa-globe"></i>
+                    <h5 class="promo-caption">Open Source</h5>
+                    <p class="light center">Our code is opensource and available on
+					  <a href="https://github.com/mohamedkhattab/lavabit2">Github</a> for free.</p>
+                </div>
+            </div>
+            <div class="col s12 m4 l4">
+                <div class="center promo promo-example">
+                    <i class="fa fa-chain"></i>
+                    <h5 class="promo-caption">Decenteralized</h5>
+                    <p class="light center">Our Github repo is licensed under the <a href="https://opensource.org/licenses/MIT"> MIT license</a>, wich means that
+					as long as the code is kept opensource, you can do whatever you like woth it.</p>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../javascripts/material.js"></script>
-        <script>
-            $.material.init();
-            $.material.input();
-            $.material.checkbox();
-            $.material.radio();
-        </script>
+
+<!--Parallax-->
+<div class="parallax-container">
+    <div class="parallax"><img src="img/parallax1.jpg"></div>
+</div>
+
+
+<!--Work-->
+<div class="section scrollspy" id="work">
+    <div class="container">
+        <h2 class="header text_b">Signup</h2>
+          <div class="row">
+			<div class="col s12">
+			  <form class="col s12" action="/signup" method="post">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="fa fa-pencil prefix blue-text"></i>
+                    <input id="icon_prefix" name="name" type="text" class="validate blue-text">
+                    <label for="icon_prefix" class="blue-text">Full Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <i class="fa fa-envelope prefix blue-text"></i>
+                    <input id="icon_email" name="email" type="email" class="validate blue-text">
+                    <label for="icon_email" class="blue-text">@magmabit.com username</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <i class="fa fa-lock prefix blue-text"></i>
+                    <input id="icon_email" name="password" type="password" class="validate blue-text">
+                    <label for="icon_email" class="blue-text">Password</label>
+                  </div>
+				  <div class="input-field col s6">
+                    <i class="fa fa-lock prefix blue-text"></i>
+                    <input id="icon_email" name="confirm" type="password" class="validate blue-text">
+                    <label for="icon_email" class="blue-text">Confirm Password</label>
+                  </div>
+				  <div class="col l12 s12">
+                    <button class="btn-flat waves-effect waves-light darken-1 blue-text" type="submit">
+					  Submit
+                    </button>
+				  </div>
+                </div>
+			  </form>
+			  <hr class="or-separator" />
+			  
+			  <h2 class="header text_b">Login</h2>
+			  <form action="/" method="post">
+				<div class="input-field col s6">
+                  <i class="fa fa-envelope prefix blue-text"></i>
+                  <input id="icon_email" name="email" type="email" class="validate blue-text">
+                  <label for="icon_email" class="blue-text">Email</label>
+                </div>
+				<div class="input-field col s6">
+                  <i class="fa fa-lock prefix blue-text"></i>
+                  <input id="login_password" name="password" type="password" class="validate blue-text">
+                  <label for="login_password" class="blue-text">Password</label>
+                </div>
+                <div class="col l12 s5">
+                  <button class="btn-flat waves-effect waves-light darken-1 blue-text" type="submit">
+					Login
+                  </button>
+                </div>
+			  </form>
+			</div>
+		  </div>
+	</div>
+</div>
+
+
+<!--Parallax 2-->
+<div class="parallax-container">
+    <div class="parallax"><img src="img/parallax2.png"></div>
+</div>
+
+
+<!--Footer-->
+<footer id="about" class="page-footer default_color scrollspy">
+    <div class="container">  
+        <div class="row">
+            <div class="col l4 s12">
+			  <a href="https://internetdefenseleague.org">
+				<img src="https://internetdefenseleague.org/images/badges/final/shield_badge.png" alt="Member of The Internet Defense League"/>
+			  </a>
+            </div>
+            <div class="col l5 s12">
+                <h5 class="white-text">magmabit.com</h5>
+				<h6 class="white-text">
+				  MagmaBit was created for your security and privacy in mind from the very beginning, we're proud
+				  to be a part of the <a class="white-text" href="https://internetdefenseleague.org/">
+					Internet Defense League</a> and to spread their campaign to protect the internet.
+				</h6>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Social</h5>
+                <ul>
+                    <li>
+                        <a class="white-text" href="https://www.facebook.com/muhammadckhattab">
+                            <i class="small fa fa-facebook-square white-text"></i> Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://github.com/mohamedkhattab/lavabit2">
+                            <i class="small fa fa-github-square white-text"></i> Github
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright default_color">
+        <div class="container">
+          made  with  <i class="fa fa-heart"></i>  By
+		  <a href="https://github.com/mohamedkhattab" class="white-text">
+			<b>Mohamed Khattab</b>
+		  </a>
+		  and  
+		  <a href="https://github.com/amraboelkher" class="white-text">
+			<b>Amr Hassan</b>
+		  </a>
+        </div>
+    </div>
+</footer>
+
+
+    <!--  Scripts-->
+    <script src="../javascripts/plugin-min.js"></script>
+    <script src="../javascripts/custom-min.js"></script>
+
+	<!--
+	<script type="text/javascript" src="https://widget.decidethefuture.org/widget/embed.js" async></script>
+	-->
     </body>
 </html>
