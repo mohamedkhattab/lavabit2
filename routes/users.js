@@ -10,21 +10,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {  
-	//console.log(req.body);
+	console.log(req.body);
 	hash.hashPassword(req.body.password, function(hash) {
 		//console.log("Hashed pass: " + hash);
 		userController.retrieve(req.body.email, function(user) {
-			//console.log("USER: " + user);
+			console.log(req.body);
+      console.log(req.body.email + " " + req.body.password);
+      //console.log("USER: " + user);
 			verify.checkUser(req.body, function(result) {
-				//console.log("Result: " + result);
-				if(!result || user){
+				console.log("Result: " + result);
+				if(!result || user){  
 					res.redirect('/users/signup');
 				} else {
 					userController.create({
-						email: req.body.email,
-						password: hash,
-						inbox: [],
-						draft: []
+						fullName: req.body.fullName,
+            email: req.body.email,
+						password: hash
 					});
 					res.redirect('/'); 
 				} 
@@ -56,7 +57,7 @@ router.post('/login', function(req, res, next) {
                console.log(req.cookies["123"]);
                console.log(req.cookies);
              }
-			  
+			  //res.redirect('/');
 			 res.redirect('/user/' + user._id);
           }
           else {

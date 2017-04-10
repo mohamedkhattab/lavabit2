@@ -20,12 +20,13 @@ router.post('/logout' , function(req , res , next){
         
 });
 
-router.get('/fetch/:id', function(req, res, next) {
+router.get('/fetchInbox/:id', function(req, res, next) {
     Session.checkSession(req , function(result){
         if(result)
             res.redirect('/');
         userController.retrieveById(req.params.id, function(user) {
             if(user) {
+                
                 res.json({ success: true, inbox: user.inbox });
             } else {
                 res.json({ success: false, inbox: null });

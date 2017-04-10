@@ -1,14 +1,19 @@
 var User = require('../models/user');
+var Inbox = require('../models/inbox');
+var Sent = require('../models/sent');
+var Draft = require('../models/draft');
+
 
 module.exports = {
     create: function(obj) {
+        console.log("i am here :D :D ");
         var newUser = new User(obj);
         var result = false;
+
         newUser.save(function(err) {
             console.log('new user saved successfully!');
             result = true;
         });
-
         return result;
     },
 
@@ -23,6 +28,36 @@ module.exports = {
             if(user) result = user;
 
             return callback(result);
+        });
+    },
+
+    retrieveInbox: function(id , callBack){
+        var strId = id.str;
+        var query = Inbox.where({id: strId});
+        query.exec(function(err , inbox){
+            if(err)
+                return callBack(Error("Error while loading inbox :D "));
+            callBack(inbox);
+        });
+    },
+
+    retrieveSent: function(id , callBack){
+        var strId = id.str;
+        var query = Inbox.where({id: strId});
+        query.exec(function(err , sent){
+            if(err)
+                return callBack(Error("Error while loading sent :D "));
+            callBack(sent);
+        });
+    },
+
+    retrieveDraft: function(id , callBack){
+        var strId = id.str;
+        var query = Inbox.where({id: strId});
+        query.exec(function(err , draft){
+            if(err)
+                return callBack(Error("Error while loading draft :D "));
+            callBack(draft);
         });
     },
 
