@@ -6,7 +6,6 @@ var hash = require('../lib/hash');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log("I am here my bitches :D :D ");
   res.send('respond with a resource');
 });
 
